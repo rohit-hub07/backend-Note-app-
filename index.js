@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const corsOptions = {
-  origin: ["http://localhost:8000", "http://localhost:5173"],
+  origin: ["http://localhost:8000", "http://localhost:5173", "https://note-app-frontend-sandy.vercel.app"],
   credentials: true,
 };
 
@@ -28,6 +28,10 @@ app.get("/health", (req, res) => {
     message: "health route is working!",
     success: true,
   });
+});
+
+app.get("/", (req, res) => {
+  res.send("Backend home")
 });
 
 app.use("/user", userRouter);
